@@ -4,7 +4,7 @@ var log = new Logger({
 	name: 'stripe-donation-processor'
 });
 
-var isTestMode = getFromEnv('STRIPE_TEST_MODE') || true;
+var isTestMode = (getFromEnv('STRIPE_TEST_MODE') === 'true') || true;
 var keys = {
 	private_test: getFromEnv('STRIPE_KEY_PRIVATE_TEST'),
 	private_live: getFromEnv('STRIPE_KEY_PRIVATE_LIVE')
