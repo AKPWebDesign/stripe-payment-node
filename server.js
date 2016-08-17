@@ -66,6 +66,9 @@ var server = restify.createServer({
 });
 
 server.use(restify.gzipResponse());
+server.use(restify.CORS({
+    origins: ['https://*.akpwebdesign.com']
+}));
 
 server.get('/charge/:email/:token/:amount', charge);
 
