@@ -45,7 +45,7 @@ function charge(req, res, next) {
 			}
 			next(new restify.errors.BadRequestError(err.message || null));
 		} else {
-			res.json(charge);
+			res.json({success: true});
 			log.info({charge: charge}, 'Successfully charged card.');
 		  next();
 		}
@@ -66,9 +66,6 @@ var server = restify.createServer({
 });
 
 server.use(restify.gzipResponse());
-server.use(restify.CORS({
-    origins: ['https://*.akpwebdesign.com']
-}));
 
 server.get('/charge/:email/:token/:amount', charge);
 
